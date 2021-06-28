@@ -1,0 +1,59 @@
+{
+  "action": "test",
+  "regressions": {
+    "all": {
+      "test": [
+        [
+          "t_run_1_2",
+          [
+            1234
+          ]
+        ],
+        [
+          "t_run_1_4",
+          [
+            1234
+          ]
+        ],
+        [
+          "t_run_2_1",
+          [
+            1234
+          ]
+        ],
+        [
+          "t_run_2_2",
+          [
+            1234
+          ]
+        ],
+        [
+          "t_run_7_1",
+          [
+            1234
+          ]
+        ]
+      ]
+    }
+  },
+  "foobar1": "test1",
+  "foobar2": "test2",
+  "release": "201104",
+  "minor": "3",
+  "runroot": "prog-201104",
+  "dut_files": [
+    "/release/201104/src/main.c",
+    [
+      "YES: 3"
+    ],
+    {
+      "myarr": [
+        "bar",
+        1,
+        2,
+        3
+      ]
+    }
+  ],
+  "eof": true
+}

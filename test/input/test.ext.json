@@ -1,0 +1,31 @@
+{
+    "action":        "test",
+
+    "regressions": {
+
+        "all": {
+            "test": [
+                [ "t_run_1_2", [ 1234 ] ],
+                [ "t_run_1_4", [ 1234 ] ],
+                [ "t_run_2_1", [ 1234 ] ],
+                [ "t_run_2_2", [ 1234 ] ],
+                [ "t_run_7_1", [ 1234 ] ]
+            ]
+        }
+    },
+
+    "@include"     : "test/input/inc.ext.json",
+
+    "release"     : "201104",
+    "minor"       : "3",
+    "runroot"     : { "@join": [ "-", "prog", {"@self":"release"} ] },
+
+
+    "dut_files": [
+        { "@join": [ "/", "/release", {"@self":"release"}, "src/main.c" ] },
+        { "@eval": { "@join": [ " ", "echo YES:", {"@self": "minor"} ] } },
+        { "myarr": { "@flat" : [ "foo", "bar", [ 1, 2 ,3 ] ] } }
+    ],
+
+    "eof": true
+}

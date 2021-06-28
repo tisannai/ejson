@@ -1,0 +1,17 @@
+#!/usr/bin/env ruby
+
+require 'como'
+require 'json'
+require 'ejson'
+
+require 'byebug'
+
+
+Como::Spec.command( 'ejson', 'Tero Isannainen', '2021',
+    [
+        [ :single,      'ifile',   '-i', "EJSON file." ],
+        [ :opt_single,  'ofile',   '-o', "JSON file, expanded (default: stdout)." ],
+    ] )
+
+json = Ejson.new( Como::Opt['ifile'].value )
+puts json.to_s

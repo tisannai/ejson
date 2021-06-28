@@ -1,0 +1,10 @@
+= ESJON
+
+{Ejson} is ...
+
+
+== Testing
+
+Tests are executed with (when available):
+
+    rake test
