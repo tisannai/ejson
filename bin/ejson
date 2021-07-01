@@ -9,9 +9,30 @@ require 'byebug'
 
 Como::Spec.command( 'ejson', 'Tero Isannainen', '2021',
     [
-        [ :single,      'ifile',   '-i', "EJSON file." ],
+        [ :opt_single,  'ifile',   '-i', "EJSON file." ],
         [ :opt_single,  'ofile',   '-o', "JSON file, expanded (default: stdout)." ],
     ] )
 
-json = Ejson.new( Como::Opt['ifile'].value )
-puts json.to_s
+
+def open( filename, desc = nil, mode = "r" )
+    if filename[0] != "<"
+        File.open( filename, mode )
+    else
+        desc
+    end
+end
+
+def close( filename, desc = nil )
+    if filename[0] != "<"
+        close( desc ) if desc
+    end
+end
+
+ifile = Como::Opt['ifile'].apply( "<stdin>" )
+ofile = Como::Opt['ofile'].apply( "<stdout>" )
+
+odesc = open( ofile, STDOUT, "w" )
+
+ejson = Ejson.new( ifile )
+odesc.puts( ejson.to_s )
+close( ofile, odesc )

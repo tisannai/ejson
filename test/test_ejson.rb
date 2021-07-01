@@ -26,3 +26,17 @@ class EjsonTest < Test::Unit::TestCase
     end
 
 end
+
+#require_relative '../lib/ejson.rb'
+#require 'fileutils'
+#FileUtils.mkdir_p( "test/result" )
+#
+#ifile = 'test/input/test.ext.json'
+#
+## Open file.
+#json = Ejson.new( ifile )
+#ofile = "test/result/test.json"
+#File.write( ofile, JSON.pretty_generate( json.data ) )
+#
+#golden_data = File.read( "test/golden/test.json" )
+#design_data = File.read( ofile )

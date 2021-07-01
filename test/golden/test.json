@@ -40,7 +40,7 @@
   "foobar2": "test2",
   "release": "201104",
   "minor": "3",
-  "runroot": "prog-201104",
+  "runroot": "prog-t_run_1_4",
   "dut_files": [
     "/release/201104/src/main.c",
     [
