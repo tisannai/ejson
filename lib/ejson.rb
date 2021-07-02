@@ -1,40 +1,5 @@
 require 'json'
-
-require 'byebug'
-
-#
-# Extended JSON, EJSON
-#
-# JSON contains literal entries. EJSON extends the liternal entries to
-# dynamic which are evaluated.
-#
-# Dynamic entries are captured in Hash data and they are indentified
-# with specific keys: eval, self, join, conc.
-#
-# The Extension Keys (EK) are reserved words in JSON, since they are
-# only intended for extension (expansion).
-#
-# Example:
-#
-#   {
-#     "opts": [ { "@eval": "/projects/ejson/sbin/list_opts" },
-#                   { "@join": [ " ",
-#                               "-conf_file",
-#                               { "@join": [ "/",
-#                                           { "@self": "workdir" },
-#                                           "unit/data.txt" ] }
-#                             ]
-#                   }
-#                 ],
-#
-# "opts" is a literal JSON entry, since it doesn't match an EK. "eval"
-# is an EK, and the related value is used as shell command.
-#
-# "join" is also an EK, which takes a list (array) of entries to join
-# as one string. However, the result might contain arrays, which are
-# first flattened.
-#
-
+# require 'byebug'
 
 class Ejson
 
