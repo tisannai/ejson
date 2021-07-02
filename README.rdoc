@@ -1,6 +1,6 @@
 = ESJON
 
-{Ejson} is ...
+e{Ejson} is described in README.md
 
 
 == Testing

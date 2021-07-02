@@ -150,11 +150,11 @@ class Ejson
             scope = path[ label ]
         end
         # scope = path[ label ]
-        if scope.class == String
+#        if scope.class == String
             scope
-        else
-            scope.to_s
-        end
+#        else
+#            scope.to_s
+#        end
     end
 
     def override_desc( data, exp )
