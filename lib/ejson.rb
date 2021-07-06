@@ -115,11 +115,11 @@ class Ejson
             scope = path[ label ]
         end
         # scope = path[ label ]
-#        if scope.class == String
+        # if scope.class == String
             scope
-#        else
-#            scope.to_s
-#        end
+        # else
+        #     scope.to_s
+        # end
     end
 
     def override_desc( data, exp )
@@ -164,7 +164,15 @@ class Ejson
 
         when String; data
 
-        when Array; data.map{|i| expand( i )}.compact
+        when Array;
+            ret = []
+            @cur_data.unshift ret
+            data.each do |v|
+                value = expand( v )
+                ret.push( value ) if value
+            end
+            @cur_data.shift
+            ret
 
         when Hash
 
@@ -204,12 +212,21 @@ class Ejson
                     subdata = read_json_file( jsonfile )
                     expdata = expand( subdata )
                     if expdata.class == Hash
-                        expdata.each do |ke,ve|
-                            @cur_data[0][ ke ] = ve
+                        if @cur_data[0].class == expdata.class
+                            expdata.each do |ke,ve|
+                                @cur_data[0][ ke ] = ve
+                            end
+                        else
+                            raise EjsonIncludeError,
+                            "Included file (\"#{jsonfile}\") must contain a hash as top level"
+                        end
+                    elsif expdata.class == Array
+                        expdata.each do |ve|
+                            @cur_data[0].push ve
                         end
                     else
                         raise EjsonIncludeError,
-                        "Included file (\"#{jsonfile}\") must contain a hash as top level"
+                        "Included file (\"#{jsonfile}\") must contain a hash or a an array as top level"
                     end
                     @cur_file.shift
                     nil

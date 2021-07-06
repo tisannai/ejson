@@ -6,15 +6,17 @@
         "all": {
             "test": [
                 [ "t_run_1_2", [ 1234 ] ],
+                { "@null": false },
                 [ "t_run_1_4", [ 1234 ] ],
                 [ "t_run_2_1", [ 1234 ] ],
                 [ "t_run_2_2", [ 1234 ] ],
-                [ "t_run_7_1", [ 1234 ] ]
+                [ "t_run_7_1", [ 1234 ] ],
+                { "@include": "test/input/inc-arr.ext.json" }
             ]
         }
     },
 
-    "included-file": { "@include": "test/input/inc.ext.json" },
+    "included-file": { "@include": "test/input/inc-hash.ext.json" },
 
     "release"     : "201104",
     "minor"       : "3",
