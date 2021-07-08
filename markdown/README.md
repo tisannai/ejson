@@ -21,6 +21,8 @@ The extensions provide dynamic behaviour and modularity support.
 
 * `@eval`: Evaluate "system"/"shell" command.
 
+* `@env`:  Reference an environment variable.
+
 * `@join`: Join pieces of strings with given separator.
 
 * `@flat`: Flatten the list by one level.
