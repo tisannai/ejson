@@ -187,6 +187,9 @@ class Ejson
                 when "@eval"
                     %x"#{expand(v)}".split("\n")
 
+                when "@env"
+                    ENV[expand(v)]
+
                 when "@join"
                     flatten( v[1..-1].map{|i| expand( i )} ).join( v[0] )
 

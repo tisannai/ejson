@@ -47,6 +47,7 @@
   "release": "201104",
   "minor": "3",
   "runroot": "prog-",
+  "home": "FOOBAR",
   "dut_files": [
     "/release/201104/src/main.c",
     [

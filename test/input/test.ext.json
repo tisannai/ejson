@@ -21,6 +21,7 @@
     "release"     : "201104",
     "minor"       : "3",
     "runroot"     : { "@join": [ "-", "prog", {"@self":":regressions:all:test:1:0"} ] },
+    "home"        : { "@env": "EJSON_FOOBAR" },
 
 
     "dut_files": [

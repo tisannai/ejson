@@ -19,21 +19,21 @@ and feels like a "normal" JSON file.
 
 The extensions provide dynamic behaviour and modularity support.
 
-* "@eval": Evaluate "system"/"shell" command.
+* `@eval`: Evaluate "system"/"shell" command.
 
-* "@join": Join pieces of strings with given separator.
+* `@join`: Join pieces of strings with given separator.
 
-* "@flat": Flatten the list by one level.
+* `@flat`: Flatten the list by one level.
 
-* "@self": Refer to existing key/value pair, i.e. support for variables.
+* `@self`: Refer to existing key/value pair, i.e. support for variables.
 
-* "@over": Overwrite existing value or create if not existing.
+* `@over`: Overwrite existing value or create if not existing.
 
-* "@base": Set base (default) value, if not existing.
+* `@base`: Set base (default) value, if not existing.
 
-* "@null": No operation.
+* `@null`: No operation.
 
-* "@include": Expand another Ejson/JSON file inplace.
+* `@include`: Expand another Ejson/JSON file inplace.
 
 
 Example:

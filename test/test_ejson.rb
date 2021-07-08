@@ -8,6 +8,8 @@ class EjsonTest < Test::Unit::TestCase
 
         FileUtils.mkdir_p( "test/result" )
 
+        ENV['EJSON_FOOBAR'] = "FOOBAR"
+
         ifile = 'test/input/test.ext.json'
 
         # Open file.

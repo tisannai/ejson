@@ -1,10 +1,3 @@
 = ESJON
 
-e{Ejson} is described in README.md
-
-
-== Testing
-
-Tests are executed with (when available):
-
-    rake test
+{Ejson} is described in "markdown/README.md".
