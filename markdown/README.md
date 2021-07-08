@@ -1,15 +1,15 @@
 # Overview
 
-Ejson is an extension to JSON format. The Ejson library processes the
+Xjson is an extension to JSON format. The Xjson library processes the
 extensions and outputs standard JSON.
 
-Ejson as JSON format is compatible with standard JSON, i.e. the syntax
-is the same and Ejson can be processed with JSON tools. The extensions
-are special Ejson keyworks that have semantics which the Ejson
+Xjson as JSON format is compatible with standard JSON, i.e. the syntax
+is the same and Xjson can be processed with JSON tools. The extensions
+are special Xjson keyworks that have semantics which the Xjson
 processors manages.
 
-Ejson renders the JSON database more dynamic and easy to maintain. The
-same could be achieved with a separate pre-processor, but Ejson
+Xjson renders the JSON database more dynamic and easy to maintain. The
+same could be achieved with a separate pre-processor, but Xjson
 provides tight integration to JSON. This means that JSON aware text
 editors can be utilized and the JSON file (but with extensions) looks
 and feels like a "normal" JSON file.
@@ -35,7 +35,7 @@ The extensions provide dynamic behaviour and modularity support.
 
 * `@null`: No operation.
 
-* `@include`: Expand another Ejson/JSON file inplace.
+* `@include`: Expand another Xjson/JSON file inplace.
 
 
 Example:
@@ -43,7 +43,7 @@ Example:
 ```
     {
         "opts": [
-            { "@eval": "/prj/ejson/sbin/list_opts" },
+            { "@eval": "/prj/xjson/sbin/list_opts" },
             { "@join": [ " ",
                          "-conf_file",
                          { "@join": [ "/",

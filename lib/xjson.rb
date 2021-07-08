@@ -1,17 +1,17 @@
 require 'json'
 # require 'byebug'
 
-class Ejson
+class Xjson
 
-    class EjsonIncludeError < RuntimeError; end
-    class EjsonReferenceError < RuntimeError; end
+    class XjsonIncludeError < RuntimeError; end
+    class XjsonReferenceError < RuntimeError; end
 
     VERSION = "0.0.1"
-    def Ejson.version
-        Ejson::VERSION
+    def Xjson.version
+        Xjson::VERSION
     end
 
-    def Ejson.load( filename )
+    def Xjson.load( filename )
         Marshal.load( File.read( filename ) )
     end
 
@@ -19,18 +19,18 @@ class Ejson
     attr_reader :data
     attr_reader :dir
 
-    def initialize( ejson_file )
+    def initialize( xjson_file )
         @cur_file = []
         @cur_data = []
         @ext_data = {}
-        @ext_data = read_json_file( ejson_file )
+        @ext_data = read_json_file( xjson_file )
         @data = expand( @ext_data )
     end
 
-    def read_json_file( ejson_file )
-        @cur_file.unshift ejson_file
-        if ejson_file[0] != "<"
-            JSON.parse( File.read( ejson_file ) )
+    def read_json_file( xjson_file )
+        @cur_file.unshift xjson_file
+        if xjson_file[0] != "<"
+            JSON.parse( File.read( xjson_file ) )
         else
             JSON.parse( STDIN.read )
         end
@@ -77,12 +77,12 @@ class Ejson
                 if path[0] == "*"
                     # Wildcard for array.
                     unless path[1] && path[2]
-                        raise EjsonReferenceError,
+                        raise XjsonReferenceError,
                         "Invalid reference: \"#{ref_desc}\" in \"#{@cur_file[0]}\", missing match key and value ..."
                     end
                     index = find_in_array_of_hash( scope, path[1], path[2] )
                     unless index
-                        raise EjsonReferenceError,
+                        raise XjsonReferenceError,
                         "Invalid reference: \"#{ref_desc}\" in \"#{@cur_file[0]}\", key and value not matched ..."
                     end
                     scope = scope[ index ]
@@ -97,7 +97,7 @@ class Ejson
                 end
                 path.shift
                 unless scope
-                    raise EjsonReferenceError,
+                    raise XjsonReferenceError,
                     "Invalid reference: \"#{ref_desc}\" in \"#{@cur_file[0]}\"..."
                 end
             end
@@ -220,7 +220,7 @@ class Ejson
                                 @cur_data[0][ ke ] = ve
                             end
                         else
-                            raise EjsonIncludeError,
+                            raise XjsonIncludeError,
                             "Included file (\"#{jsonfile}\") must contain a hash as top level"
                         end
                     elsif expdata.class == Array
@@ -228,7 +228,7 @@ class Ejson
                             @cur_data[0].push ve
                         end
                     else
-                        raise EjsonIncludeError,
+                        raise XjsonIncludeError,
                         "Included file (\"#{jsonfile}\") must contain a hash or a an array as top level"
                     end
                     @cur_file.shift
