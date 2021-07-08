@@ -74,6 +74,7 @@ Extension arguments and results:
 
 ```
     @eval: <string>                           => <string>
+    @env:  <string>                           => <string>
     @join: <separator>, <list-of-strings>     => <string>
     @flat: <array-of-atoms-or-arrays>         => <array>
     @self: <key-reference>                    => <value>
