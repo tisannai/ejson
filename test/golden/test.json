@@ -3,53 +3,37 @@
   "regressions": {
     "all": {
       "test": [
-        [
-          "t_run_1_2",
-          [
-            1234
-          ]
-        ],
-        [
-          "t_run_1_4",
-          [
-            1234
-          ]
-        ],
-        [
-          "t_run_2_1",
-          [
-            1234
-          ]
-        ],
-        [
-          "t_run_2_2",
-          [
-            1234
-          ]
-        ],
-        [
-          "t_run_7_1",
-          [
-            1234
-          ]
-        ],
         {
-          "foobar1": "test1"
+          "name": "t_run_1_1",
+          "dir": "test_dir"
         },
         {
-          "foobar2": "test2"
+          "name": "t_run_1_2",
+          "dir": "test_dir-1_2"
+        },
+        {
+          "name": "t_run_1_3",
+          "dir": "test_dir"
+        },
+        {
+          "foobar1": "test1",
+          "dir": "test_dir"
+        },
+        {
+          "foobar2": "test2",
+          "dir": "test_dir"
         }
       ]
     }
   },
   "foobar1": "test1",
   "foobar2": "test2",
-  "release": "201104",
+  "release": "210701",
   "minor": "3",
   "runroot": "prog-",
   "home": "FOOBAR",
   "dut_files": [
-    "/release/201104/src/main.c",
+    "/release/210701/src/main.c",
     [
       "YES: 3"
     ],

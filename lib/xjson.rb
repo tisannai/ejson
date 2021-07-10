@@ -6,7 +6,7 @@ class Xjson
     class XjsonIncludeError < RuntimeError; end
     class XjsonReferenceError < RuntimeError; end
 
-    VERSION = "0.0.1"
+    VERSION = "0.0.2"
     def Xjson.version
         Xjson::VERSION
     end
@@ -27,6 +27,7 @@ class Xjson
         @data = expand( @ext_data )
     end
 
+    # Read xjson file.
     def read_json_file( xjson_file )
         @cur_file.unshift xjson_file
         if xjson_file[0] != "<"
@@ -34,6 +35,11 @@ class Xjson
         else
             JSON.parse( STDIN.read )
         end
+    end
+
+    # Write expanded json file.
+    def write_json_file( json_file )
+        File.write( json_file, JSON.pretty_generate( @data ) + "\n" )
     end
 
     # Flatten by one level within array.
@@ -67,7 +73,6 @@ class Xjson
 
     def reference_handle( data, ref_desc )
         if ref_desc[0] != ":"
-            # [ data, ref_desc ]
             reference_handle( data, ":#{ref_desc}" )
         else
             # Relative reference from root.
@@ -114,12 +119,7 @@ class Xjson
             # scope = scope[ path[0] ]
             scope = path[ label ]
         end
-        # scope = path[ label ]
-        # if scope.class == String
-            scope
-        # else
-        #     scope.to_s
-        # end
+        scope
     end
 
     def override_desc( data, exp )
@@ -257,10 +257,12 @@ class Xjson
         end
     end
 
+    # Return JSON data as string.
     def to_s
         JSON.pretty_generate( @data )
     end
 
+    # Dump JSON data as marshal.
     def dump( filename )
         File.write( filename, Marshal.dump( @data ) )
     end

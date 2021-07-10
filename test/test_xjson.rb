@@ -15,7 +15,7 @@ class XjsonTest < Test::Unit::TestCase
         # Open file.
         json = Xjson.new( ifile )
         ofile = "test/result/test.json"
-        File.write( ofile, JSON.pretty_generate( json.data ) )
+        json.write_json_file( ofile )
 
         golden_data = File.read( "test/golden/test.json" )
         design_data = File.read( ofile )
@@ -28,17 +28,3 @@ class XjsonTest < Test::Unit::TestCase
     end
 
 end
-
-#require_relative '../lib/xjson.rb'
-#require 'fileutils'
-#FileUtils.mkdir_p( "test/result" )
-#
-#ifile = 'test/input/test.ext.json'
-#
-## Open file.
-#json = Xjson.new( ifile )
-#ofile = "test/result/test.json"
-#File.write( ofile, JSON.pretty_generate( json.data ) )
-#
-#golden_data = File.read( "test/golden/test.json" )
-#design_data = File.read( ofile )

@@ -5,12 +5,10 @@
 
         "all": {
             "test": [
-                [ "t_run_1_2", [ 1234 ] ],
+                { "name": "t_run_1_1" },
                 { "@null": false },
-                [ "t_run_1_4", [ 1234 ] ],
-                [ "t_run_2_1", [ 1234 ] ],
-                [ "t_run_2_2", [ 1234 ] ],
-                [ "t_run_7_1", [ 1234 ] ],
+                { "name": "t_run_1_2" },
+                { "name": "t_run_1_3" },
                 { "@include": "test/input/inc-arr.ext.json" }
             ]
         }
@@ -18,11 +16,12 @@
 
     "included-file": { "@include": "test/input/inc-hash.ext.json" },
 
-    "release"     : "201104",
-    "minor"       : "3",
-    "runroot"     : { "@join": [ "-", "prog", {"@self":":regressions:all:test:1:0"} ] },
-    "home"        : { "@env": "XJSON_FOOBAR" },
-
+    "release"      : "210701",
+    "minor"        : "3",
+    "runroot"      : { "@join": [ "-", "prog", {"@self":":regressions:all:test:1:0"} ] },
+    "home"         : { "@env": "XJSON_FOOBAR" },
+    "test-dir"     : { "@base": [ ":regressions:all:test:*", [ "dir", "test_dir" ] ] },
+    "test-dir-1_2" : { "@over": [ ":regressions:all:test:*:name:t_run_1_2:dir", "test_dir-1_2" ] },
 
     "dut_files": [
         { "@join": [ "/", "/release", {"@self":"release"}, "src/main.c" ] },
