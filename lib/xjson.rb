@@ -19,11 +19,17 @@ class Xjson
     attr_reader :data
     attr_reader :dir
 
-    def initialize( xjson_file )
+    def initialize( xjson_file, preset = nil )
         @cur_file = []
         @cur_data = []
         @ext_data = {}
         @ext_data = read_json_file( xjson_file )
+        if preset
+            # Insert preset data from user.
+            preset.each do |k,v|
+                @ext_data[ k ] = v
+            end
+        end
         @data = expand( @ext_data )
     end
 
