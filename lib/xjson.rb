@@ -117,15 +117,9 @@ class Xjson
             index = Integer( label )
             scope = path[ index ]
         rescue
-            # scope = scope[ path[0] ]
             scope = path[ label ]
         end
-        # scope = path[ label ]
-        # if scope.class == String
-            scope
-        # else
-        #     scope.to_s
-        # end
+        scope
     end
 
     def override_desc( data, exp )
