@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
     s.name        = 'xjson'
-    s.version     = '0.0.2'
+    s.version     = '0.0.3'
     s.date        = '-<write Time.now.to_s.split[0]>-'
     s.summary     = "Xjson is extension to JSON format."
     s.description = "Xjson is extension to JSON format."
