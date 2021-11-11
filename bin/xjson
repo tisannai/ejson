@@ -2,7 +2,8 @@
 
 require 'como'
 require 'json'
-require 'xjson'
+#require 'xjson'
+require_relative '../lib/xjson'
 
 require 'byebug'
 
@@ -10,6 +11,7 @@ require 'byebug'
 Como::Spec.command( 'xjson', 'Tero Isannainen', '2021',
     [
         [ :opt_single,  'ifile',   '-i', "XJSON file." ],
+        [ :opt_any,     'preset',  '-p', "Preset assignments." ],
         [ :opt_single,  'ofile',   '-o', "JSON file, expanded (default: stdout)." ],
     ] )
 
@@ -33,6 +35,6 @@ ofile = Como::Opt['ofile'].apply( "<stdout>" )
 
 odesc = open( ofile, STDOUT, "w" )
 
-xjson = Xjson.new( ifile )
+xjson = Xjson.new( ifile, Como::Opt['preset'].params )
 odesc.puts( xjson.to_s )
 close( ofile, odesc )

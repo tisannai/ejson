@@ -5,8 +5,9 @@ class Xjson
 
     class XjsonIncludeError < RuntimeError; end
     class XjsonReferenceError < RuntimeError; end
+    class XjsonSyntaxError < RuntimeError; end
 
-    VERSION = "0.0.1"
+    VERSION = "0.0.2"
     def Xjson.version
         Xjson::VERSION
     end
@@ -30,7 +31,7 @@ class Xjson
                 @ext_data[ k ] = v
             end
         end
-        @data = expand( @ext_data )
+        @data = expand( @ext_data, true )
     end
 
     def read_json_file( xjson_file )
@@ -127,7 +128,6 @@ class Xjson
         { path: path, label: label, value: exp[1] }
     end
 
-
     def override_apply( desc, overwrite = false )
         if desc[:label] == "*"
             desc[:path].each do |place|
@@ -142,7 +142,6 @@ class Xjson
         end
     end
 
-
     def override( data, exp, overwrite = false )
         desc = override_desc( data, exp )
         override_apply( desc, overwrite )
@@ -150,7 +149,7 @@ class Xjson
 
 
     # Expand json recursively.
-    def expand( data )
+    def expand( data, top = false )
 
         case data
 
@@ -207,6 +206,33 @@ class Xjson
                     override( @cur_data[0], expand(v), false )
                     nil
 
+                when "@cond";
+                    index = 0
+                    ret = nil
+                    while index < v.length
+                        if v[index].class == Array
+                            # Conditional branch.
+                            if expand(v[index][0])
+                                ret = expand(v[index][1])
+                                break
+                            end
+                        else
+                            # Else branch.
+                            if index == v.length-1
+                                ret = expand(v[index])
+                                break
+                            else
+                                raise XjsonSyntaxError,
+                                "Conditional statement allows \"else\" branch only in the last position: \"#{jsonfile}\""
+                            end
+                        end
+                        index += 1
+                    end
+                    ret
+
+                when "@comp";
+                    expand(v[0]) == expand(v[1])
+
                 when "@null"
                     nil
 
@@ -249,6 +275,10 @@ class Xjson
                     else
                         value = expand( v )
                         ret[ k ] = value if value
+                        if top
+                            # Immediately update k/v if at top.
+                            @ext_data[ k ] = value if value
+                        end
                     end
                 end
                 @cur_data.shift

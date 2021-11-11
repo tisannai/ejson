@@ -18,7 +18,10 @@
 
     "included-file": { "@include": "test/input/inc-hash.ext.json" },
 
-    "release"     : "201104",
+    "release_sel" : "201101",
+    "release"     : { "@cond": [ [ {"@comp": [ {"@self": "release_sel"}, "201104" ]},
+                                   "201104" ],
+                                 "201105" ] },
     "minor"       : "3",
     "runroot"     : { "@join": [ "-", "prog", {"@self":":regressions:all:test:1:0"} ] },
     "home"        : { "@env": "XJSON_FOOBAR" },

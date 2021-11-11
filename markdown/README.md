@@ -33,6 +33,10 @@ The extensions provide dynamic behaviour and modularity support.
 
 * `@base`: Set base (default) value, if not existing.
 
+* `@cond`: Return first branch with true condition (or else branch).
+
+* `@comp`: Compare pair (array of two) for sameness.
+
 * `@null`: No operation.
 
 * `@include`: Expand another Xjson/JSON file inplace.
@@ -80,6 +84,8 @@ Extension arguments and results:
     @self: <key-reference>                    => <value>
     @over: <key-reference>, <value>           => -
     @base: <key-reference>, <value>           => -
+    @cond: <array-of-branches-opt-else>       => <value>
+    @comp: <pair>                             => <boolean>
     @null: false                              => -
     @include: <filename-string>               => <hash>
 
