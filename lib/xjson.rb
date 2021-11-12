@@ -7,7 +7,7 @@ class Xjson
     class XjsonReferenceError < RuntimeError; end
     class XjsonSyntaxError < RuntimeError; end
 
-    VERSION = "0.0.2"
+    VERSION = "0.0.3"
     def Xjson.version
         Xjson::VERSION
     end
