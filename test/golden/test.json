@@ -4,24 +4,19 @@
     "all": {
       "test": [
         {
-          "name": "t_run_1_1",
-          "dir": "test_dir"
+          "name": "t_run_1_1"
         },
         {
-          "name": "t_run_1_2",
-          "dir": "test_dir-1_2"
+          "name": "t_run_1_2"
         },
         {
-          "name": "t_run_1_3",
-          "dir": "test_dir"
+          "name": "t_run_1_3"
         },
         {
-          "foobar1": "test1",
-          "dir": "test_dir"
+          "foobar1": "test1"
         },
         {
-          "foobar2": "test2",
-          "dir": "test_dir"
+          "foobar2": "test2"
         }
       ]
     }
@@ -31,7 +26,7 @@
   "release_sel": "201101",
   "release": "201105",
   "minor": "3",
-  "runroot": "prog-t_run_1_4",
+  "runroot": "prog-test1",
   "home": "FOOBAR",
   "dut_files": [
     "/release/201105/src/main.c",
