@@ -22,6 +22,7 @@
     }
   },
   "foobar1": "test1",
+  "diiduu": false,
   "foobar2": "test2",
   "release_sel": "201101",
   "release": "201105",
@@ -35,6 +36,7 @@
     ],
     {
       "myarr": [
+        "foo",
         "bar",
         1,
         2,

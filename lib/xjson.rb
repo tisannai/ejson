@@ -198,7 +198,7 @@ class Xjson
                     flatten( v[1..-1].map{|i| expand( i )} ).join( v[0] )
 
                 when "@flat"
-                    flatten( v[1..-1].map{|i| expand( i )} )
+                    flatten( v[0..-1].map{|i| expand( i )} )
 
                 when "@self"
                     reference( @ext_data, expand(v) )
@@ -279,10 +279,10 @@ class Xjson
                     when "@null"; nil
                     else
                         value = expand( v )
-                        ret[ k ] = value if value
+                        ret[ k ] = value if value != nil
                         if top
                             # Immediately update k/v if at top.
-                            @ext_data[ k ] = value if value
+                            @ext_data[ k ] = value if value != nil
                         end
                     end
                 end
